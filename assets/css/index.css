@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.home {
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    border-radius: 3rem;
+}
+
+.search input {
+    border: 1px solid black;
+    background-color: bisque;
+    border-radius: 3rem;
+    padding: 1rem;
+    width: 35rem;
+}
+
+.about {
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    border-radius: 3rem;
+}
+
+.gallery {
+    padding: 5rem;
+}
+
+.gallery-item {
+    border: 1px solid black;
+    /* padding: 1rem; */
+    width: 16rem; 
+    height: 23rem;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 80%;
+}
+
+.gallery-item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem;
+
+}
+.gallery-item-title{
+    padding: 0.4rem;
+}
+i{
+    color: red;
+    font-size: 1.5rem;
+}
