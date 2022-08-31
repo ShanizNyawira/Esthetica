@@ -22,18 +22,23 @@ function render(data = []) {
                 </div>
             </div>
         `;
-    };
-    gallery.innerHTML = html;
-
+        galleryItem.innerHTML = html;
+    }
     
-render(data);
+    
+//render(data);
 
-/*fetch('http://localhost:3000/data')
+fetch('https://api.artsy.net/api/artworks',{
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'X-XAPP-Token':'eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI2MzBmYTdiM2E5ODQzYjAwMGNiZDBkMGUiLCJleHAiOjE2NjI1NzUxNTUsImlhdCI6MTY2MTk3MDM1NSwiYXVkIjoiNjMwZmE3YjNhOTg0M2IwMDBjYmQwZDBlIiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjYzMGZhN2IzY2FiZDQ0MDAwZDU0MTI2ZSJ9.DgYLFUdv3OS4cOs9prxCkMUtFEeAJgI8MwjZSaORgkU'
+    }
+    })
 .then(resp=>resp.json())
 .then(data=>{
-      let imgSrc = data._embedded.artworks[0]._links.thumbnail.href
-      let toAdd = imgSrc.replace("medium", "large")
-      console.log(toAdd)
-})*/
+      let renderData = data._embedded.artworks
+        render(renderData);
+})
 
 
