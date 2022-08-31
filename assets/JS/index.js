@@ -8,13 +8,17 @@ likeButton.addEventListener('click', function() {
     noOfLikes.innerHTML = `${parseInt(likes) + 1} likes`;
 } );
 function render(data = []) {
+    data.forEach(function(item) {
+        let img = item._links.thumbnail.href;
+        let image = img.replace('medium', 'large');
+        let likes = 0;
     let html = `
             <div class="gallery-item">
                 <div class="gallery-item-title">
-                    ${title}
+                    ${item.title}
                 </div>
                 
-                    <img src="${image}" alt="${title}">
+                    <img src="${image}" alt="${item.title}">
                 </div>
                 <div class="gallery-item-likes">
                     <button id="like">Like</button>
@@ -22,7 +26,9 @@ function render(data = []) {
                 </div>
             </div>
         `;
-        galleryItem.innerHTML = html;
+        galleryItem.innerHTML += html;
+
+    });
     }
     
     
