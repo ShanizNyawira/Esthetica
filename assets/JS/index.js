@@ -19,7 +19,6 @@ function render(data = []) {
                 </div>
                 
                     <img src="${image}" alt="${item.title}">
-                </div>
                 <div class="gallery-item-likes">
                     <button id="like">Like</button>
                     <span id="no-of-likes">${likes} likes</span>
