@@ -16,6 +16,17 @@ function render(data = []) {
     galleryItem.className = "gallery-item";
     let galleryItemLikes = document.createElement("div");
     galleryItemLikes.className = "gallery-item-likes";
+    let span = document.createElement("span");
+    span.id = "no-of-likes";
+    span.innerHTML = `${likes} likes`;
+    galleryItemLikes.appendChild(span);
+    let i = document.createElement("i");
+    i.className = "fas fa-heart";
+    i.addEventListener("click", function () {
+        let [likes, ,] = span.textContent.split(" ");
+        span.innerHTML = `${parseInt(likes) + 1} likes`;
+    });
+    galleryItemLikes.appendChild(i);
     let html = `
                     <div class="gallery-item-title">
                     ${item.title}
@@ -24,6 +35,8 @@ function render(data = []) {
                     <img src="${image}" alt="${item.title}">
         `;
     galleryItem.innerHTML += html;
+    galleryItem.appendChild(galleryItemLikes);
+    gallery.appendChild(galleryItem);
   });
 }
 
