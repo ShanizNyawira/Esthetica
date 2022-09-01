@@ -1,7 +1,7 @@
 let likeButton = document.querySelector('#like');
 let noOfLikes = document.querySelector('#no-of-likes');
 let artTitle =document.querySelector(".gallery-item-title")
-let galleryItem = document.querySelector(".gallery-item")
+let gallery= document.querySelector(".gallery")
 
 likeButton.addEventListener('click', function() {
     let [likes,,] = noOfLikes.textContent.split(' ');
@@ -26,7 +26,7 @@ function render(data = []) {
                 </div>
             </div>
         `;
-        galleryItem.innerHTML += html;
+        gallery.innerHTML += html;
 
     });
     }
