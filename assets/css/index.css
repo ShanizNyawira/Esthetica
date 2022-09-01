@@ -29,7 +29,9 @@
 
 .gallery {
     display: flex;
-   /* padding: 5rem;*/
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 5rem;
     width: 100%;
     background-color: tomato;
 
