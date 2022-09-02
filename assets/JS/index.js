@@ -8,6 +8,7 @@ let gallery = document.querySelector(".gallery");
     noOfLikes.innerHTML = `${parseInt(likes) + 1} likes`;
 } );*/
 function render(data = []) {
+  gallery.innerHTML = "";
   data.forEach(function (item) {
     let img = item._links.thumbnail.href;
     let image = img.replace("medium", "large");
@@ -41,7 +42,8 @@ function render(data = []) {
 }
 
 //render(data);
-function fetchArts(url) {
+
+function fetchArts(url, type) {
   fetch(url, {
     method: "GET",
     headers: {
@@ -52,8 +54,14 @@ function fetchArts(url) {
   })
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       let renderData = data._embedded.artworks;
       render(renderData);
     });
 }
 fetchArts("https://api.artsy.net/api/artworks?size=100");
+document.getElementById("searchart").addEventListener("keyup", function (e) {
+  let search = e.target.value;
+  let url = `https://api.artsy.net/api/search?q=${search}`;
+  fetchArts(url);
+});
