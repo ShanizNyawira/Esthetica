@@ -7,10 +7,15 @@ let gallery = document.querySelector(".gallery");
     let [likes,,] = noOfLikes.textContent.split(' ');
     noOfLikes.innerHTML = `${parseInt(likes) + 1} likes`;
 } );*/
-function render(data = []) {
+function render(data = [],type) {
   gallery.innerHTML = "";
   data.forEach(function (item) {
-    let img = item._links.thumbnail.href;
+    let img;
+    if (type === "search") {
+      img = item._links.thumbnail.href;
+    } else {
+      img = item._links.thumbnail.href;
+    }
     let image = img.replace("medium", "large");
     let likes = 0;
     let galleryItem = document.createElement("div");
@@ -21,7 +26,8 @@ function render(data = []) {
     span.id = "no-of-likes";
     span.innerHTML = `${likes} likes`;
     galleryItemLikes.appendChild(span);
-    let i = document.createElement("i");
+    let i = document.createElement("i");    
+
     i.className = "fas fa-heart";
     i.addEventListener("click", function () {
       let [likes, ,] = span.textContent.split(" ");
@@ -55,13 +61,18 @@ function fetchArts(url, type) {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
-      let renderData = data._embedded.artworks;
-      render(renderData);
+      if (type === "search") {
+        render(data._embedded.results, type);
+        
+      } else {
+        let renderData = data._embedded.artworks;
+        render(renderData,type);
+      }
     });
 }
-fetchArts("https://api.artsy.net/api/artworks?size=100");
+fetchArts("https://api.artsy.net/api/artworks?size=100", "all");
 document.getElementById("searchart").addEventListener("keyup", function (e) {
   let search = e.target.value;
   let url = `https://api.artsy.net/api/search?q=${search}`;
-  fetchArts(url);
+  fetchArts(url,'search');
 });
