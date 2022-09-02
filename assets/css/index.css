@@ -2,29 +2,32 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2rem;
+    background-color: bisque;
 }
 
 .home {
-    color: white;
-    background-color: black;
+    color: White;
+    background-color: darkmagenta;
     padding: 1rem;
     border-radius: 3rem;
+    margin-top: 2rem;
 }
 
 .search input {
-    border: 1px solid black;
+    border: 1px solid darkmagenta;
     background-color: bisque;
     border-radius: 3rem;
     padding: 1rem;
-    width: 35rem;
+    width: 28rem;
+    margin-top: 2rem;
 }
 
 .about {
     color: white;
-    background-color: black;
+    background-color: darkmagenta;
     padding: 1rem;
     border-radius: 3rem;
+    margin-top: 2rem;
 }
 
 .gallery {
@@ -33,6 +36,7 @@
     flex-wrap: wrap;
     padding: 5rem;
     /* width: 100%; */
+    background-color: bisque;
 
 }
 
@@ -62,6 +66,7 @@
 
 .gallery-item-title {
     padding: 0.4rem;
+    font-size: 1.2rem;
 }
 
 i {
