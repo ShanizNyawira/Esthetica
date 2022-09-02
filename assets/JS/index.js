@@ -23,8 +23,8 @@ function render(data = []) {
     let i = document.createElement("i");
     i.className = "fas fa-heart";
     i.addEventListener("click", function () {
-        let [likes, ,] = span.textContent.split(" ");
-        span.innerHTML = `${parseInt(likes) + 1} likes`;
+      let [likes, ,] = span.textContent.split(" ");
+      span.innerHTML = `${parseInt(likes) + 1} likes`;
     });
     galleryItemLikes.appendChild(i);
     let html = `
@@ -41,17 +41,19 @@ function render(data = []) {
 }
 
 //render(data);
-
-fetch("https://api.artsy.net/api/artworks", {
-  method: "GET",
-  headers: {
-    Accept: "application/json",
-    "X-XAPP-Token":
-      "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI2MzBmYTdiM2E5ODQzYjAwMGNiZDBkMGUiLCJleHAiOjE2NjI1NzUxNTUsImlhdCI6MTY2MTk3MDM1NSwiYXVkIjoiNjMwZmE3YjNhOTg0M2IwMDBjYmQwZDBlIiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjYzMGZhN2IzY2FiZDQ0MDAwZDU0MTI2ZSJ9.DgYLFUdv3OS4cOs9prxCkMUtFEeAJgI8MwjZSaORgkU",
-  },
-})
-  .then((resp) => resp.json())
-  .then((data) => {
-    let renderData = data._embedded.artworks;
-    render(renderData);
-  });
+function fetchArts(url) {
+  fetch(url, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "X-XAPP-Token":
+        "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI2MzBmYTdiM2E5ODQzYjAwMGNiZDBkMGUiLCJleHAiOjE2NjI1NzUxNTUsImlhdCI6MTY2MTk3MDM1NSwiYXVkIjoiNjMwZmE3YjNhOTg0M2IwMDBjYmQwZDBlIiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjYzMGZhN2IzY2FiZDQ0MDAwZDU0MTI2ZSJ9.DgYLFUdv3OS4cOs9prxCkMUtFEeAJgI8MwjZSaORgkU",
+    },
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      let renderData = data._embedded.artworks;
+      render(renderData);
+    });
+}
+fetchArts("https://api.artsy.net/api/artworks?size=100");
