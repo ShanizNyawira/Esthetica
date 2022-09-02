@@ -76,3 +76,8 @@ document.getElementById("searchart").addEventListener("keyup", function (e) {
   let url = `https://api.artsy.net/api/search?q=${search}`;
   fetchArts(url,'search');
 });
+document.getElementById("searchart").addEventListener("input", function (e) {
+  if (e.target.value === "") {
+    fetchArts("https://api.artsy.net/api/artworks?size=100", "all");
+  }
+} );
