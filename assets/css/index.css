@@ -67,6 +67,7 @@
 .gallery-item-title {
     padding: 0.4rem;
     font-size: 1.2rem;
+    height: 10%;
 }
 
 i {
@@ -76,4 +77,8 @@ i {
 
 #about {
     width: 30%;
+    background-color: bisque;
+}
+body {
+    background-color: bisque;
 }
